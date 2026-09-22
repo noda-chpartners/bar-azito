@@ -1,0 +1,91 @@
+---
+import Icon from './Icon.astro';
+import { mapEmbed, mapLink, site } from '../data/site';
+---
+
+<section class="section" id="access">
+  <div class="section-head wrap" data-reveal>
+    <div>
+      <p class="kicker"><span>04</span> Access</p>
+      <h2>上野町の、2階へ。</h2>
+    </div>
+    <p class="section-lead">
+      入り口は Retro上野町ビルの2階です。ご連絡はお電話、またはInstagramへ。
+    </p>
+  </div>
+
+  <div class="access-grid wrap">
+    <dl class="info" data-reveal>
+      <div>
+        <dt>店名</dt>
+        <dd>{site.name}</dd>
+      </div>
+      <div>
+        <dt>住所</dt>
+        <dd>
+          <a href={mapLink} target="_blank" rel="noopener noreferrer">
+            {site.region}{site.city}{site.street}<br />
+            {site.building}
+          </a>
+        </dd>
+      </div>
+      <div>
+        <dt>電話</dt>
+        <dd>
+          <a class="info-phone" href={`tel:${site.phoneTel}`}>{site.phoneDisplay}</a>
+        </dd>
+      </div>
+      <div>
+        <dt>営業</dt>
+        <dd>
+          <span class="nowrap">{site.hours}</span>
+          <small>{site.hoursNote}</small>
+        </dd>
+      </div>
+      <div>
+        <dt>定休</dt>
+        <dd>{site.closed}</dd>
+      </div>
+      <div>
+        <dt>席数</dt>
+        <dd>{site.seats}</dd>
+      </div>
+      <div>
+        <dt>アクセス</dt>
+        <dd>{site.station}から{site.walk}</dd>
+      </div>
+      <div>
+        <dt>Instagram</dt>
+        <dd>
+          <a href={site.instagramUrl} target="_blank" rel="noopener noreferrer">{site.instagramHandle}</a>
+        </dd>
+      </div>
+    </dl>
+
+    <div class="map-block" data-reveal>
+      <div class="map">
+        <iframe
+          title="barAZITOの地図"
+          src={mapEmbed}
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+      </div>
+      <a class="text-link" href={mapLink} target="_blank" rel="noopener noreferrer">
+        <Icon name="pin" />
+        <span>地図を開く</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="actions wrap">
+    <a class="btn" href={`tel:${site.phoneTel}`}>
+      <Icon name="phone" />
+      <span>電話する</span>
+    </a>
+    <a class="btn" href={site.instagramUrl} target="_blank" rel="noopener noreferrer">
+      <Icon name="instagram" />
+      <span>Instagram</span>
+    </a>
+  </div>
+</section>

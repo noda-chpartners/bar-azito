@@ -1,0 +1,75 @@
+---
+import { Image } from 'astro:assets';
+import { site } from '../data/site';
+import logo from '../assets/images/logo-white.png';
+import hero from '../assets/images/IMG_0546.jpg';
+
+const ticker = ['barAZITO', '宮崎市上野町', site.hours, '28 SEATS', `${site.station} ${site.walk}`];
+---
+
+<section class="hero" id="top">
+  <div class="hero-copy">
+    <div class="hero-bottom">
+      <p class="kicker rise" style="--d: 0.05s"><span>Miyazaki</span> Ueno-cho</p>
+      <h1 class="rise" style="--d: 0.18s">
+        <Image
+          class="hero-logo"
+          src={logo}
+          alt={site.name}
+          widths={[420, 690]}
+          sizes="(min-width: 960px) 480px, 86vw"
+          format="webp"
+          quality={92}
+          loading="eager"
+        />
+      </h1>
+      <p class="hero-statement rise" style="--d: 0.32s">
+        上野町の2階で、<br />夜をひらく。
+      </p>
+      <p class="hero-support rise" style="--d: 0.44s">
+        {site.station}から{site.walk}。営業は21時から、翌朝5時まで。
+      </p>
+      <ul class="hero-meta rise" style="--d: 0.56s">
+        <li>
+          <span>営業</span>
+          <b>{site.hours}</b>
+          <small>{site.hoursNote}</small>
+        </li>
+        <li>
+          <span>定休</span>
+          <b>{site.closed}</b>
+        </li>
+        <li>
+          <span>席数</span>
+          <b>28</b>
+          <small>SEATS</small>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="hero-media">
+    <Image
+      class="hero-img"
+      src={hero}
+      alt="グローブランプとレザーソファが並ぶ、照明を落とした店内"
+      widths={[640, 960, 1108]}
+      sizes="(min-width: 960px) 48vw, 100vw"
+      format="webp"
+      quality={78}
+      loading="eager"
+      fetchpriority="high"
+    />
+    <p class="hero-vert">宮崎市上野町</p>
+  </div>
+</section>
+
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <p>
+      {ticker.map((item) => <span>{item}</span>)}
+    </p>
+    <p>
+      {ticker.map((item) => <span>{item}</span>)}
+    </p>
+  </div>
+</div>

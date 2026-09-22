@@ -1,0 +1,67 @@
+---
+import { Image } from 'astro:assets';
+import shochu from '../assets/images/IMG_0553.jpg';
+import liqueur from '../assets/images/IMG_0554.jpg';
+import lineup from '../assets/images/IMG_0555.jpg';
+---
+
+<section class="section" id="drink">
+  <div class="section-head wrap" data-reveal>
+    <div>
+      <p class="kicker"><span>03</span> Drink</p>
+      <h2>棚の向こうから、<br />今夜の一杯。</h2>
+    </div>
+    <p class="section-lead">
+      焼酎、ウイスキー、リキュール。ラベルの並ぶ棚は、この店の景色のひとつです。一杯の相談は、カウンターで。
+    </p>
+  </div>
+
+  <div class="drink-gallery wrap">
+    <figure data-reveal>
+      <div class="frame frame-land">
+        <Image
+          src={shochu}
+          alt="棚に並ぶ焼酎のボトル"
+          widths={[640, 960, 1170]}
+          sizes="(min-width: 960px) 86vw, 100vw"
+          format="webp"
+          quality={78}
+          class="pos-right"
+          data-parallax
+        />
+      </div>
+      <figcaption>焼酎</figcaption>
+    </figure>
+    <div class="drink-split">
+      <figure data-reveal>
+        <div class="frame frame-land">
+          <Image
+            src={liqueur}
+            alt="ランプの灯りの下に並ぶリキュール"
+            widths={[480, 800, 1170]}
+            sizes="(min-width: 800px) 42vw, 100vw"
+            format="webp"
+            quality={78}
+            data-parallax
+          />
+        </div>
+        <figcaption>リキュール</figcaption>
+      </figure>
+      <figure data-reveal>
+        <div class="frame frame-land">
+          <Image
+            src={lineup}
+            alt="カウンターに並ぶウイスキーと焼酎"
+            widths={[480, 800, 1170]}
+            sizes="(min-width: 800px) 42vw, 100vw"
+            format="webp"
+            quality={78}
+            class="pos-lineup"
+            data-parallax
+          />
+        </div>
+        <figcaption>ウイスキーと焼酎</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>

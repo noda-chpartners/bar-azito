@@ -1,0 +1,102 @@
+---
+import { Image } from 'astro:assets';
+import room from '../assets/images/IMG_0552.jpg';
+import bust from '../assets/images/IMG_0550.jpg';
+import bar from '../assets/images/IMG_0548.jpg';
+import still from '../assets/images/IMG_0549.jpg';
+import whiskey from '../assets/images/IMG_0551.jpg';
+---
+
+<section class="section" id="space">
+  <div class="section-head wrap" data-reveal>
+    <div>
+      <p class="kicker"><span>02</span> Space</p>
+      <h2>光が、席の輪郭を残す。</h2>
+    </div>
+    <p class="section-lead">
+      L字に続くソファと低いテーブル。カウンターの奥には酒瓶、壁際には花と彫刻が置かれています。
+    </p>
+  </div>
+
+  <figure class="room" data-reveal>
+    <Image
+      src={room}
+      alt="レザーソファがL字に続く店内全景"
+      widths={[640, 960, 1170]}
+      sizes="100vw"
+      format="webp"
+      quality={78}
+      data-parallax
+    />
+    <figcaption class="room-cap">
+      <span>店内全景</span>
+      <p class="room-stat">28<small>席</small></p>
+    </figcaption>
+  </figure>
+
+  <div class="gallery wrap">
+    <div class="stack">
+      <figure data-reveal>
+        <div class="frame frame-portrait">
+          <Image
+            src={bust}
+            alt="グリーンと石膏像を配したカウンター"
+            widths={[480, 768, 1108]}
+            sizes="(min-width: 960px) 40vw, 100vw"
+            format="webp"
+            quality={78}
+            class="pos-bust"
+            data-parallax
+          />
+        </div>
+        <figcaption>カウンター</figcaption>
+      </figure>
+      <figure data-reveal>
+        <div class="frame frame-portrait">
+          <Image
+            src={still}
+            alt="酒瓶とオブジェ、短冊を置いた棚"
+            widths={[480, 720, 960]}
+            sizes="(min-width: 960px) 40vw, 100vw"
+            format="webp"
+            quality={78}
+            data-parallax
+          />
+        </div>
+        <figcaption>棚の静物</figcaption>
+      </figure>
+    </div>
+    <div class="stack stack-offset">
+      <figure data-reveal>
+        <div class="frame frame-portrait">
+          <Image
+            src={bar}
+            alt="酒瓶と花が並ぶカウンターのモノクロ写真"
+            widths={[480, 720, 960]}
+            sizes="(min-width: 960px) 40vw, 100vw"
+            format="webp"
+            quality={78}
+            class="pos-bar"
+            data-parallax
+          />
+        </div>
+        <figcaption>ボトルと花</figcaption>
+      </figure>
+      <figure data-reveal>
+        <div class="frame frame-portrait">
+          <Image
+            src={whiskey}
+            alt="石膏像とウイスキーのボトル"
+            widths={[480, 768, 1045]}
+            sizes="(min-width: 960px) 40vw, 100vw"
+            format="webp"
+            quality={78}
+            class="pos-bust"
+            data-parallax
+          />
+        </div>
+        <figcaption>夜のカウンター</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>

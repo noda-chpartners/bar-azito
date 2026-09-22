@@ -1,0 +1,50 @@
+---
+import { Image } from 'astro:assets';
+import { nav, site } from '../data/site';
+import logo from '../assets/images/logo-white.png';
+import Icon from './Icon.astro';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <div class="wrap footer-grid">
+    <a class="footer-brand" href="#top">
+      <Image
+        src={logo}
+        alt={site.name}
+        widths={[320, 690]}
+        sizes="240px"
+        format="webp"
+        quality={92}
+      />
+    </a>
+    <address>
+      {site.region}{site.city}{site.street}<br />
+      {site.building}<br />
+      {site.station}から{site.walk}
+    </address>
+    <nav aria-label="フッター">
+      {
+        nav.map((item) => (
+          <a href={item.href}>{item.label}</a>
+        ))
+      }
+    </nav>
+  </div>
+  <div class="wrap footer-bar">
+    <p>&copy; {year} {site.name}</p>
+    <a href="#top">ページ上部へ</a>
+  </div>
+</footer>
+
+<div class="dock">
+  <a href={`tel:${site.phoneTel}`}>
+    <Icon name="phone" />
+    <span>電話する</span>
+  </a>
+  <a href={site.instagramUrl} target="_blank" rel="noopener noreferrer">
+    <Icon name="instagram" />
+    <span>Instagram</span>
+  </a>
+</div>

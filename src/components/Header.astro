@@ -1,0 +1,68 @@
+---
+import { Image } from 'astro:assets';
+import { nav, site } from '../data/site';
+import logo from '../assets/images/logo-white.png';
+import Icon from './Icon.astro';
+---
+
+<header class="header">
+  <a class="brand" href="#top">
+    <Image
+      src={logo}
+      alt={site.name}
+      widths={[180, 360, 690]}
+      sizes="140px"
+      format="webp"
+      quality={92}
+    />
+  </a>
+  <div class="header-end">
+    <nav class="nav" aria-label="ページ内">
+      {
+        nav.map((item) => (
+          <a href={item.href} data-nav>
+            {item.label}
+          </a>
+        ))
+      }
+    </nav>
+    <a
+      class="ig-link"
+      href={site.instagramUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={`Instagram ${site.instagramHandle}`}
+    >
+      <Icon name="instagram" />
+    </a>
+    <button
+      class="menu-btn"
+      type="button"
+      data-menu
+      aria-expanded="false"
+      aria-controls="nav-panel"
+    >
+      <span class="sr-only" data-menu-label>メニューを開く</span>
+      <span class="burger" aria-hidden="true"></span>
+    </button>
+  </div>
+</header>
+
+<nav id="nav-panel" class="nav-panel" data-menu-panel inert aria-hidden="true" aria-label="メニュー">
+  <ol>
+    {
+      nav.map((item) => (
+        <li>
+          <a href={item.href}>
+            <span>{item.index}</span>
+            {item.label}
+          </a>
+        </li>
+      ))
+    }
+  </ol>
+  <a class="panel-ig" href={site.instagramUrl} target="_blank" rel="noopener noreferrer">
+    <Icon name="instagram" />
+    <span>{site.instagramHandle}</span>
+  </a>
+</nav>

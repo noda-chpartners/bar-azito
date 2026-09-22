@@ -1,0 +1,34 @@
+---
+import { Image } from 'astro:assets';
+import photo from '../assets/images/IMG_0547.jpg';
+---
+
+<section class="section concept" id="concept">
+  <div class="wrap concept-grid">
+    <div class="concept-copy" data-reveal>
+      <p class="kicker"><span>01</span> Concept</p>
+      <h2>夜が深まるほど、<br />席は静かに開く。</h2>
+      <div class="prose">
+        <p>
+          宮崎市上野町。ビルの2階に、barAZITOはあります。木の天井、グレーの壁、革のソファ。照明は低く、会話の輪郭だけを残します。
+        </p>
+        <p>
+          席は28。話す夜も、グラスをひとつ置くだけの夜も、ここでは同じ温度で過ごせます。定休日は不定休です。
+        </p>
+      </div>
+    </div>
+    <figure class="frame frame-portrait" data-reveal>
+      <Image
+        src={photo}
+        alt="石膏像と白い花をモノクロで写した壁際"
+        widths={[480, 720, 960]}
+        sizes="(min-width: 960px) 42vw, 100vw"
+        format="webp"
+        quality={78}
+        class="pos-face"
+        data-parallax
+      />
+      <figcaption>壁際</figcaption>
+    </figure>
+  </div>
+</section>
