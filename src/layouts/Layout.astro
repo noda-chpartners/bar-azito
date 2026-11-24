@@ -8,37 +8,85 @@ interface Props {
 }
 
 const {
-  title = `${site.name}｜宮崎市上野町のバー`,
+  title = site.title,
   description = site.description,
 } = Astro.props;
 
 const pageUrl = new URL(Astro.url.pathname, Astro.site ?? Astro.url);
 const imageUrl = new URL('/ogp.jpg', Astro.site ?? Astro.url);
+const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(addressInline)}`;
+const pageId = `${pageUrl.href}#webpage`;
+const businessId = `${pageUrl.href}#bar`;
 
 const jsonLd = {
   '@context': 'https://schema.org',
-  '@type': 'BarOrPub',
-  name: site.name,
-  description: site.description,
-  url: pageUrl.href,
-  image: imageUrl.href,
-  telephone: '+81-90-1923-6404',
-  address: {
-    '@type': 'PostalAddress',
-    streetAddress: `${site.street} ${site.building}`,
-    addressLocality: site.city,
-    addressRegion: site.region,
-    addressCountry: 'JP',
-  },
-  openingHoursSpecification: {
-    '@type': 'OpeningHoursSpecification',
-    dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
-    opens: '21:00',
-    closes: '05:00',
-    description: '定休日は不定休',
-  },
-  sameAs: [site.instagramUrl],
-  hasMap: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(addressInline)}`,
+  '@graph': [
+    {
+      '@type': 'WebSite',
+      '@id': `${pageUrl.href}#website`,
+      name: site.name,
+      alternateName: site.alternateName,
+      url: pageUrl.href,
+      inLanguage: 'ja',
+    },
+    {
+      '@type': 'WebPage',
+      '@id': pageId,
+      url: pageUrl.href,
+      name: title,
+      description,
+      inLanguage: 'ja',
+      isPartOf: { '@id': `${pageUrl.href}#website` },
+      about: { '@id': businessId },
+      primaryImageOfPage: { '@id': `${pageUrl.href}#primary-image` },
+    },
+    {
+      '@type': 'ImageObject',
+      '@id': `${pageUrl.href}#primary-image`,
+      url: imageUrl.href,
+      contentUrl: imageUrl.href,
+      width: 1200,
+      height: 630,
+      caption: '宮崎市上野町 barAZITOの店内',
+    },
+    {
+      '@type': 'BarOrPub',
+      '@id': businessId,
+      name: site.name,
+      alternateName: site.alternateName,
+      description,
+      url: pageUrl.href,
+      image: imageUrl.href,
+      telephone: '+81-90-1923-6404',
+      currenciesAccepted: 'JPY',
+      publicAccess: true,
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: `${site.street} ${site.building}`,
+        addressLocality: site.city,
+        addressRegion: site.region,
+        addressCountry: 'JP',
+      },
+      openingHoursSpecification: {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: [
+          'Monday',
+          'Tuesday',
+          'Wednesday',
+          'Thursday',
+          'Friday',
+          'Saturday',
+          'Sunday',
+        ],
+        opens: '21:00',
+        closes: '05:00',
+        description: '平日・土日祝とも同じ。定休日は不定休',
+      },
+      hasMap: mapUrl,
+      sameAs: [site.instagramUrl],
+      mainEntityOfPage: { '@id': pageId },
+    },
+  ],
 };
 ---
 
@@ -50,6 +98,7 @@ const jsonLd = {
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
     <meta name="theme-color" content="#0c0c0c" />
     <meta name="geo.region" content="JP-45" />
     <meta name="geo.placename" content="宮崎市上野町" />
@@ -67,15 +116,22 @@ const jsonLd = {
     <meta property="og:image" content={imageUrl.href} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="barAZITOの店内" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:alt" content="宮崎市上野町 barAZITOの店内" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={imageUrl.href} />
+    <meta name="twitter:image:alt" content="宮崎市上野町 barAZITOの店内" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500&family=Shippori+Mincho:wght@400;500;600&family=Zen+Kaku+Gothic+New:wght@400;500&display=swap"
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500&family=Shippori+Mincho:wght@400;500&family=Zen+Kaku+Gothic+New:wght@400;500&display=swap"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500&family=Shippori+Mincho:wght@400;500&family=Zen+Kaku+Gothic+New:wght@400;500&display=swap"
       rel="stylesheet"
     />
     <script is:inline>

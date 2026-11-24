@@ -3,11 +3,11 @@ import Icon from './Icon.astro';
 import { mapEmbed, mapLink, site } from '../data/site';
 ---
 
-<section class="section" id="access">
+<section class="section" id="access" aria-labelledby="access-heading">
   <div class="section-head wrap" data-reveal>
     <div>
       <p class="kicker"><span>04</span> Access</p>
-      <h2>上野町の、2階へ。</h2>
+      <h2 id="access-heading">上野町の、2階へ。</h2>
     </div>
     <p class="section-lead">
       入り口は Retro上野町ビルの2階です。ご連絡はお電話、またはInstagramへ。
@@ -15,6 +15,7 @@ import { mapEmbed, mapLink, site } from '../data/site';
   </div>
 
   <div class="access-grid wrap">
+    <address>
     <dl class="info" data-reveal>
       <div>
         <dt>店名</dt>
@@ -61,6 +62,7 @@ import { mapEmbed, mapLink, site } from '../data/site';
         </dd>
       </div>
     </dl>
+    </address>
 
     <div class="map-block" data-reveal>
       <div class="map">

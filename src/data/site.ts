@@ -1,7 +1,9 @@
 export const site = {
   name: 'barAZITO',
+  alternateName: 'bar AZITO',
+  title: 'barAZITO｜宮崎市上野町のバー',
   description:
-    '宮崎市上野町のバー、barAZITO。営業は21時から翌朝5時、定休日は不定休。宮崎駅から徒歩18分、全28席。',
+    '宮崎市上野町のバー「barAZITO」。営業時間は21時から翌朝5時、定休日は不定休。宮崎駅から徒歩18分、Retro上野町ビル2F、全28席。',
   phoneDisplay: '090-1923-6404',
   phoneTel: '09019236404',
   instagramHandle: '@bar_azito.miyazaki',

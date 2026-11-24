@@ -80,6 +80,7 @@ ol {
 
 address {
   font-style: normal;
+  margin: 0;
 }
 
 ::selection {
@@ -753,10 +754,12 @@ figure figcaption {
 .footer {
   padding: 72px 0 28px;
   border-top: 1px solid var(--line);
+  text-align: center;
 }
 
 .footer-grid {
   display: grid;
+  justify-items: center;
   gap: 28px;
 }
 
@@ -776,6 +779,7 @@ figure figcaption {
 .footer nav {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 8px 20px;
 }
 
@@ -785,7 +789,8 @@ figure figcaption {
 
 .footer-bar {
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 16px;
   margin-top: 36px;
   padding-top: 18px;
@@ -965,18 +970,6 @@ body {
   .map {
     height: 100%;
     min-height: 520px;
-  }
-
-  .footer-grid {
-    grid-template-columns: 1.3fr 1fr auto;
-    align-items: end;
-    gap: 40px;
-  }
-
-  .footer nav {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 4px;
   }
 
   body {
